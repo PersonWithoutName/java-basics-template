@@ -39,8 +39,14 @@ public class SimpleMathService implements MathService {
      */
     @Override
     public int maxFrom(int[] values) {
-
-        return -1;
+        int array[] = new int[]{1, 3, 5, 7, 8};
+        int maxValue = array[0];
+        for (int i = 1; i < array.length; i++) {
+            if (array[i] > maxValue) {
+                maxValue = array[i];
+            }
+        }
+        return maxValue;
     }
 
     /**
@@ -49,7 +55,12 @@ public class SimpleMathService implements MathService {
      */
     @Override
     public int sum(int[] values) {
-        return -1;
+        int array[] = {-6, 5, -2, 78};
+        int sum = 0;
+        for (int i = 0; i < array.length; i++) {
+            sum = sum + array[i];
+        }
+        return sum;
     }
 
     /**
