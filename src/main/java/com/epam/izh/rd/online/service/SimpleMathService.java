@@ -13,6 +13,7 @@ public class SimpleMathService implements MathService {
      */
     @Override
     public int compare(int value1, int value2) {
+        int x
         return -2;
     }
 
@@ -22,6 +23,7 @@ public class SimpleMathService implements MathService {
      */
     @Override
     public int maxFrom(int value1, int value2) {
+
         return -1;
     }
 
@@ -31,6 +33,7 @@ public class SimpleMathService implements MathService {
      */
     @Override
     public int maxFrom(int[] values) {
+
         return -1;
     }
 
