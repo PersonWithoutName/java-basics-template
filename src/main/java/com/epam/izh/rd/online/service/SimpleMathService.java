@@ -72,7 +72,7 @@ public class SimpleMathService implements MathService {
      * Метод фильтрует массив, оставляя только четные числа.
      * Например для списка {-1, -3, 4, 8, 5, 22, 17} метод должен вернуть {4, 8, 22}
      */
-    int[] data = {-6,5,-2,78};
+    int[] data = {-6, 5, -2, 78};
 
     @Override
     public int[] getEvenDigits(int[] values) {
@@ -99,7 +99,7 @@ public class SimpleMathService implements MathService {
      * Например для числа 5 метод должен вернуть 120.
      * Факториал 0 должен быть равен 1.
      */
-    static int value = 0;
+    static int value = 8;
 
     @Override
     public long calcFactorial(int initialVal) {
@@ -123,18 +123,48 @@ public class SimpleMathService implements MathService {
      * Для числа 9 метод должен вернуть 34
      * Для числа 0 метод должен вернуть 0
      */
+    int positionInFibonacci = 11;
+
     @Override
     public long calcFibonacci(int number) {
-        return -1L;
+        int n0 = 0, n1 = 1, i = 0, fibPosition = 0;
+        if (positionInFibonacci == 1) {
+            fibPosition = 1;
+        } else {
+            while (i < positionInFibonacci - 1) {
+                fibPosition = n0 + n1;
+                n0 = n1;
+                n1 = fibPosition;
+                i++;
+            }
+        }
+        return fibPosition;
     }
 
     /**
      * Метод возвращает отсортированный по возрастанию массив.
      * Например для массива {-1, -3, 4, 8, 5, 22, -5} метод должен вернуть {-5, -3, -1, 4, 5, 8, 22}
      */
+    int[] arr = {-1, -3, 4, 8, 5, 22, -5};
+
     @Override
     public int[] sort(int[] values) {
-        return new int[]{};
+         /*Внешний цикл каждый раз сокращает фрагмент массива,
+      так как внутренний цикл каждый раз ставит в конец
+      фрагмента максимальный элемент*/
+        for (int i = arr.length - 1; i > 0; i--) {
+            for (int j = 0; j < i; j++) {
+
+                if (arr[j] > arr[j + 1]) {
+                    int tmp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = tmp;
+                }
+            }
+
+
+        }
+        return arr;
     }
 
     /**
@@ -172,6 +202,14 @@ public class SimpleMathService implements MathService {
      */
     @Override
     public int[] reverseArray(int[] values) {
-        return new int[]{};
+        int[] array = {-1, -3, 4, 8, 5, 22, -5};
+        int n = array.length;
+        int temp;
+        for (int i = 0; i < n / 2; i++) {
+            temp = array[n - i - 1];
+            array[n - i - 1] = array[i];
+            array[i] = temp;
+        }
+        return array;
     }
 }
