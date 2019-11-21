@@ -13,7 +13,17 @@ public class SimpleMathService implements MathService {
      */
     @Override
     public int compare(int value1, int value2) {
-        return -2;
+        int val1 = 33;
+        int val2 = 2;
+        int ret = 0;
+        if (val1 == val2) {
+            ret = 0;
+        } else if (val1 < val2) {
+            ret = -1;
+        } else if (val1 < val2) {
+            ret = 1;
+        }
+        return ret;
     }
 
     /**
@@ -24,12 +34,7 @@ public class SimpleMathService implements MathService {
     public int maxFrom(int value1, int value2) {
         int x = -1;
         int y = 2;
-        int max;
-        if (x > y) {
-            max = x;
-        } else {
-            max = y;
-        }
+        int max = x > y ? x : y;
         return max;
     }
 
@@ -67,9 +72,26 @@ public class SimpleMathService implements MathService {
      * Метод фильтрует массив, оставляя только четные числа.
      * Например для списка {-1, -3, 4, 8, 5, 22, 17} метод должен вернуть {4, 8, 22}
      */
+    int[] data = {-6,5,-2,78};
+
     @Override
     public int[] getEvenDigits(int[] values) {
-        return new int[]{};
+        int countLength = 0;
+        for (int i = 0; i < data.length; i++) {
+            if (data[i] % 2 == 0) {
+                countLength++;
+            }
+        }
+
+        int[] filArray = new int[countLength];
+        int j = 0;
+        for (int i = 0; i < data.length; i++) {
+            if (data[i] % 2 == 0) {
+                filArray[j] = data[i];
+                j++;
+            }
+        }
+        return filArray;
     }
 
     /**
@@ -77,9 +99,18 @@ public class SimpleMathService implements MathService {
      * Например для числа 5 метод должен вернуть 120.
      * Факториал 0 должен быть равен 1.
      */
+    static int value = 0;
+
     @Override
     public long calcFactorial(int initialVal) {
-        return -1L;
+        int fact = 1;
+        int i = 1;
+
+        while (i <= value) {
+            fact = fact * i;
+            i++;
+        }
+        return fact;
     }
 
     /**
@@ -112,10 +143,27 @@ public class SimpleMathService implements MathService {
      * <p>
      * Например для числа 22 вернется false, а для числа 23 true.
      */
+    static int var = 2;
+    static int n = 21;
+
     @Override
     public boolean isPrimary(int number) {
-        return false;
+        boolean answer = false;
+
+        if (n > 1) {
+            if (n % var != 0) {
+                var++;
+                isPrimary(n);
+            } else if (var == n) {
+                answer = true;
+            } else {
+                answer = false;
+            }
+
+        }
+        return answer;
     }
+
 
     /**
      * Метод возвращает массив, в котором элементы расположены в обратном порядке.
